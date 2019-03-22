@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
 body, html {
   font-family: 'Montserrat';
   margin: 0;
@@ -51,20 +57,25 @@ nav {
   position: absolute;
   background: black;
   padding: 2em;
-  width: calc(100% - 4em);
-  height: calc(100vh - 4em);
+  width: 100vw;
+  height: 100vh;
   display: none;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
 }
 
 nav .close-btn {
   width: 18px;
   float: right;
   cursor: pointer;
+  opacity: 0;
 }
 
 nav ul {
   list-style-type: none;
-  margin: 10% auto 0 auto;
+  margin: 15% auto 0 auto;
   padding: 0;
   display: -ms-grid;
   display: grid;
@@ -87,7 +98,104 @@ nav ul span {
   margin-top: 20px;
 }
 
+nav ul li {
+  opacity: 0;
+}
+
 .show-menu {
   display: block;
+  -webkit-animation: slide-menu 0.5s ease-out forwards;
+          animation: slide-menu 0.5s ease-out forwards;
+}
+
+.show-menu .close-btn {
+  -webkit-animation: show-x 1s 0.5s forwards;
+          animation: show-x 1s 0.5s forwards;
+}
+
+.show-menu li:nth-of-type(1) {
+  -webkit-animation: menu-item 0.8s forwards 0.3s ease-in-out;
+          animation: menu-item 0.8s forwards 0.3s ease-in-out;
+}
+
+.show-menu li:nth-of-type(2) {
+  -webkit-animation: menu-item 0.8s forwards 0.6s ease-in-out;
+          animation: menu-item 0.8s forwards 0.6s ease-in-out;
+}
+
+.show-menu li:nth-of-type(3) {
+  -webkit-animation: menu-item 0.8s forwards 0.8s ease-in-out;
+          animation: menu-item 0.8s forwards 0.8s ease-in-out;
+}
+
+.show-menu li:nth-of-type(4) {
+  -webkit-animation: menu-item 0.8s forwards 0.9s ease-in-out;
+          animation: menu-item 0.8s forwards 0.9s ease-in-out;
+}
+
+@-webkit-keyframes slide-menu {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes slide-menu {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes show-x {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes show-x {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes menu-item {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
 }
 /*# sourceMappingURL=main.css.map */

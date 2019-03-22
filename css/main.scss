@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 
 body, html {
   font-family: 'Montserrat';
@@ -53,19 +57,23 @@ nav {
   position: absolute;
   background: black;
   padding: 2em;
-  width: calc(100% - 4em);
-  height: calc(100vh - 4em);
+  width: 100vw;
+  height: 100vh;
   display: none;
+  transform: scaleX(0);
+  transform-origin: right;
+
   
   .close-btn {
     width: 18px;
     float: right;
     cursor: pointer;
+    opacity: 0;
   }
 
   ul {
     list-style-type: none;
-    margin: 10% auto 0 auto;
+    margin: 15% auto 0 auto;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, 25%);
@@ -85,9 +93,67 @@ nav {
       margin-top: 20px;
     }
 
+    li {
+      opacity: 0;
+    }
+
   }
 }
 
+
+
 .show-menu {
   display: block;
+  animation: slide-menu 0.5s ease-out forwards;
+
+  .close-btn {
+    animation: show-x 1s 0.5s forwards;
+  }
+
+  li:nth-of-type(1) {
+    animation: menu-item 0.8s forwards 0.3s ease-in-out;
+  }
+
+  li:nth-of-type(2) {
+    animation: menu-item 0.8s forwards 0.6s ease-in-out;
+  }
+
+  li:nth-of-type(3) {
+    animation: menu-item 0.8s forwards 0.8s ease-in-out;
+  }
+
+  li:nth-of-type(4) {
+    animation: menu-item 0.8s forwards 0.9s ease-in-out;
+  }
+}
+
+@keyframes slide-menu {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes show-x {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes menu-item {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
